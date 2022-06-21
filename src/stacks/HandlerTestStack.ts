@@ -5,7 +5,7 @@ import { StackProps } from 'aws-cdk-lib';
 import { Topic } from 'aws-cdk-lib/aws-sns';
 import { StringParameter } from 'aws-cdk-lib/aws-ssm';
 import { Construct } from 'constructs';
-import DataAccessLayer from 'src/data-access/DataAccessLayer';
+import DataAccessLayer from '../data-access/DataAccessLayer';
 import CustomerUpdatedHandler from '../application/CustomerUpdatedHandler';
 import { AccountDetailTable, CustomerTable } from '../data-storage';
 

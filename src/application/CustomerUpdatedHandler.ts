@@ -14,7 +14,7 @@ import path from 'path';
 import {
   ENV_VAR_ACCOUNT_DETAIL_TABLE_NAME,
   ENV_VAR_CUSTOMER_TABLE_NAME,
-} from './customer-updated-handler-function/CustomerUpdatedHandlerFunction';
+} from './customer-updated-handler-function/constants';
 
 export interface CustomerUpdatedProps {
   dataAccessLayerArn: string;
