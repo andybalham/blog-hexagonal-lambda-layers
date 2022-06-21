@@ -1,7 +1,7 @@
 {
-  "name": "blog-hexagonal-lambda-functions",
+  "name": "blog-hexagonal-lambda-layers",
   "version": "1.0.0",
-  "description": "Source code for blog post on hexagonal lambda functions.",
+  "description": "Source code for blog post on hexagonal lambda layers.",
   "main": "index.js",
   "types": "index.d.ts",
   "scripts": {
@@ -15,26 +15,27 @@
     "cdk-synth-function-test": "cdk synth FunctionTestStack > .cdk-synth.yml",
     "cdk-deploy-function-test": "cdk deploy FunctionTestStack --hotswap",
     "cdk-destroy-function-test": "cdk destroy FunctionTestStack",
-    "cdk-synth-application": "cdk synth ApplicationStack > .cdk-synth.yml",
-    "cdk-deploy-application": "cdk deploy ApplicationStack",
-    "cdk-hotswap-application": "cdk deploy ApplicationStack --hotswap",
-    "cdk-destroy-application": "cdk destroy ApplicationStack",
     "cdk-synth-data-storage": "cdk synth DataStorageStack > .cdk-synth.yml",
     "cdk-deploy-data-storage": "cdk deploy DataStorageStack",
-    "cdk-deploy-all": "cdk deploy DataStorageStack && cdk deploy ApplicationStack",
-    "cdk-synth": "cdk synth",
+    "cdk-synth-data-access": "tsc && cdk synth DataAccessStack > .cdk-synth.yml",
+    "cdk-deploy-data-access": "tsc && cdk deploy DataAccessStack",
+    "cdk-synth-application": "tsc && cdk synth ApplicationStack > .cdk-synth.yml",
+    "cdk-hotswap-application": "tsc && cdk deploy ApplicationStack --hotswap",
+    "cdk-deploy-application": "tsc && cdk deploy ApplicationStack",
+    "cdk-destroy-application": "cdk destroy ApplicationStack",
+    "cdk-deploy-all": "tsc && cdk deploy DataStorageStack && cdk deploy DataAccessStack && cdk deploy ApplicationStack",
     "cdk-destroy-all": "cdk destroy --all"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/andybalham/blog-hexagonal-lambda-functions.git"
+    "url": "git+https://github.com/andybalham/blog-hexagonal-lambda-layers.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/andybalham/blog-hexagonal-lambda-functions/issues"
+    "url": "https://github.com/andybalham/blog-hexagonal-lambda-layers/issues"
   },
-  "homepage": "https://github.com/andybalham/blog-hexagonal-lambda-functions#readme",
+  "homepage": "https://github.com/andybalham/blog-hexagonal-lambda-layers#readme",
   "devDependencies": {
     "@types/aws-lambda": "^8.10.81",
     "@types/jest": "^27.4.1",

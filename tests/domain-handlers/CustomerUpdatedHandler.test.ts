@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 /* eslint-disable import/extensions, import/no-absolute-path */
-import CustomerUpdatedHandler from '../../src/domain-handlers/CustomerUpdatedHandler';
+import CustomerUpdatedHandler from '../../src/application/customer-updated-handler-function/CustomerUpdatedHandler';
 import {
   Customer,
   ICustomerStore,

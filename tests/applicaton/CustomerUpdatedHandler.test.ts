@@ -4,14 +4,18 @@ import {
   SNSTestClient,
 } from '@andybalham/cdk-cloud-test-kit';
 import { nanoid } from 'nanoid';
-import { CustomerUpdatedEvent, IAccountDetailStore, ICustomerStore } from 'src/domain-contracts';
+import {
+  CustomerUpdatedEvent,
+  IAccountDetailStore,
+  ICustomerStore,
+} from 'src/domain-contracts';
 import { AccountDetailStore, CustomerStore } from '../../src/data-access';
-import FunctionTestStack from '../../src/stacks/FunctionTestStack';
+import HandlerTestStack from '../../src/stacks/HandlerTestStack';
 
 describe('CustomerUpdatedHandler Test Suite', () => {
   //
   const testClient = new IntegrationTestClient({
-    testStackId: FunctionTestStack.Id,
+    testStackId: HandlerTestStack.Id,
   });
 
   let customerTable: DynamoDBTestClient;
@@ -25,13 +29,19 @@ describe('CustomerUpdatedHandler Test Suite', () => {
   beforeAll(async () => {
     await testClient.initialiseClientAsync();
 
-    customerTable = testClient.getDynamoDBTestClient(FunctionTestStack.CustomerTableId);
+    customerTable = testClient.getDynamoDBTestClient(
+      HandlerTestStack.CustomerTableId
+    );
     customerStore = new CustomerStore(customerTable.tableName);
 
-    accountDetailTable = testClient.getDynamoDBTestClient(FunctionTestStack.AccountDetailTableId);
+    accountDetailTable = testClient.getDynamoDBTestClient(
+      HandlerTestStack.AccountDetailTableId
+    );
     accountDetailStore = new AccountDetailStore(accountDetailTable.tableName);
 
-    customerUpdatedTopic = testClient.getSNSTestClient(FunctionTestStack.CustomerUpdatedTopicId);
+    customerUpdatedTopic = testClient.getSNSTestClient(
+      HandlerTestStack.CustomerUpdatedTopicId
+    );
   });
 
   beforeEach(async () => {
@@ -95,9 +105,10 @@ describe('CustomerUpdatedHandler Test Suite', () => {
 
     const { timedOut } = await testClient.pollTestAsync({
       until: async () => {
-        const accountDetails = await accountDetailStore.listAccountDetailsByCustomerIdAsync(
-          customerId
-        );
+        const accountDetails =
+          await accountDetailStore.listAccountDetailsByCustomerIdAsync(
+            customerId
+          );
 
         return accountDetails.every(
           (ad) =>

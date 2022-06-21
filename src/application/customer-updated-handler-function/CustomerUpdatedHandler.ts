@@ -2,7 +2,7 @@ import {
   CustomerUpdatedEvent,
   IAccountDetailStore,
   ICustomerStore,
-} from '../domain-contracts';
+} from '../../domain-contracts';
 
 export default class CustomerUpdatedHandler {
   constructor(
